@@ -1,0 +1,84 @@
+Data structures:
+patient -for now we only will have name. this will be expanded in phase 2. 
+user - for now basic user information 
+        name
+        email
+        passoword
+        username
+
+
+checklist -will have a collection of tasks
+Description
+        Assignee
+ 	Attachments 
+ 	Tags
+ 	Followers
+ 	Patient Name
+ 	Due date
+ 	Activity feed
+ 	Billing code
+ 	Priority
+ 	Create data / created by
+ 	dependencies (future phase)
+
+
+
+
+task -will inherit some attributes from checklist on creation.
+At the task level, all comments and attachments are stored at the checklist level. 
+task will belong to on checklist
+	taks name
+	patient name
+	tag collection
+	checklist name
+	create by
+	creation date
+	due date
+	assignee
+	priority
+	billing code
+	description
+	document attachment
+	dependancies (ignored for phase 1)
+	followers
+	activity feed.
+
+
+Relationships:
+each user can create a tasks and or checklist.
+each user can assign tasks or checklist to other users
+each task will belong to one checklist. by default a task will belong to Unassigned checklist.
+checklist can have zero or more tasks.
+task or checklist will have one owner, zero or more assignee and zero or more followers.
+It is possible to have more than 1 person assigned to a task.  Assignees are automatically added as followers.  However, the reverse is not always true
+
+
+Some constraints:
+* Due date of a task <=due date of checklist (a task cannot be due after the due date of the parent)
+* Priority level of task >=priority level of checklist (ie if a checklist is low priority, a task could be deemed high priority, the reverse cannot be true)
+
+
+Views:
+So now we have the following pages:
+Checklist View
+Create New Checklist view
+Create New Task Vew
+Selected Checklist View
+Selected Task View
+
+
+General Checklist view layout:
+consists of 3 sections:
+1. navigation
+-name
+-stats
+-checklist
+-tasks
+
+
+2. list view:
+list of checklist or tasks
+
+
+3 details view
+detail view for selected checklist or tasks.

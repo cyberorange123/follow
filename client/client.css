@@ -1,0 +1,116 @@
+body {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+hr {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.container {
+    max-width: none;
+}
+
+.accounts-dialog {
+    width: 250px;
+}
+
+.login-buttons-dropdown-align-right {
+    float: right;
+    height: 45px;
+    padding-top: 13px;
+    padding-right: 15px;
+}
+
+.sidebar,
+.editpanel {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar .panel {
+    margin-bottom: 0;
+}
+
+.sidebar .tabs > dd {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.userdata .tabs > dd {
+    width: 50%;
+    text-align: center;
+}
+
+.userdata .tabs-content > .content {
+    padding-top: 0;
+}
+
+.editpanel table {
+    width: 100%;
+}
+
+.row .row {
+    padding: 10px 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: solid 1px #eeeeee;
+}
+
+.row h3,
+.row input,
+.row button {
+    margin-bottom: 0;
+}
+
+.row button.right.tiny {
+    margin-top: 4px;
+}
+
+.row p {
+    margin-bottom: 10px;
+}
+
+.row p:last-child {
+    margin-bottom: 0;
+}
+
+.row .row > .columns {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.block-list {
+    margin: 0;
+    list-style: none;
+}
+
+.block-list li {
+    border: 1px solid #DDD;
+    display: block;
+    border-bottom: none;
+}
+
+.block-list li:last-child {
+    border-bottom: 1px solid #DDD;
+}
+
+.block-list li a {
+    display: block;
+    padding: 5px 7px;
+}
+
+.block-list li a:after {
+    float: right;
+    content: '>';
+    font-size: 20px;
+    margin-top: 4px;
+    line-height: 100%;
+    font-weight: bold;
+    -webkit-transform: scaleY(1.75);
+    -moz-transform: scaleY(1.75);
+    -ms-transform: scaleY(1.75);
+    -o-transform: scaleY(1.75);
+    transform: scaleY(1.75);
+}

@@ -1,0 +1,200 @@
+<head>
+    <title>FollowUP</title>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1><a>Follow-up</a></h1>
+        </li>
+    </ul>
+    <div class="top-bar-section">
+        {{> loginButtons align="right"}}
+    </div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Container -->
+<div class="row container">
+
+    <!-- Sidebar (Left Panel) -->
+    <aside class="large-2 columns sidebar">
+        {{> sidebar}}
+    </aside>
+    <!-- End Sidebar (Left Panel) -->
+
+    <!-- Center Panel -->
+    <div class="large-5 columns userdata">
+        {{> userdata}}
+    </div>
+    <!-- End Center Panel -->
+
+    <!-- Right Panel -->
+    <div class="large-5 columns editpanel">
+        {{> editpanel}}
+    </div>
+    <!-- End Right Panel -->
+
+</div>
+<!-- End Container -->
+
+</body>
+
+<!-- Sidebar Template -->
+<template name="sidebar">
+    {{#if user}}
+    <div class="panel">
+        <strong>{{user.username}}</strong>
+    </div>
+    <dl class="tabs" data-tab>
+        <dd class="active expand">
+            <a href="#checklists">My checklists</a>
+        </dd>
+        <dd>
+            <a href="#tasks">My tasks</a>
+        </dd>
+    </dl>
+    {{else}}
+    <div class="panel">
+        <strong>Please, log in</strong>
+    </div>
+    {{/if}}
+</template>
+<!-- End Sidebar Template -->
+
+<!-- Userdata Template -->
+<template name="userdata">
+    {{#if user}}
+    <div class="tabs-content">
+        <div class="content active" id="checklists">
+            {{> checklists}}
+        </div>
+        <div class="content" id="tasks">
+            {{> tasks}}
+        </div>
+    </div>
+    <script type="text/javascript">$(document).foundation()</script>
+    {{/if}}
+</template>
+<!-- End Userdata Template -->
+
+<template name="checklists">
+    <div class="row">
+        <button class="button tiny right" id="new-checklist">New List</button>
+        <h3>{{user.username}}'s checklists</h3>
+    </div>
+    <div class="row">
+        <dl class="tabs" data-tab>
+            <dd class="active"><a href="#checklists-all">All Lists</a></dd>
+            <dd><a href="#checklists-completed">Completed</a></dd>
+        </dl>
+        <div class="tabs-content">
+            <div class="content active" id="checklists-all">
+                <ul class="block-list">
+                    <li class="checklist">
+                        <a href="#">Unassigned</a>
+                    </li>
+                    {{#each lists}}
+                    <li class="checklist">
+                        <a href="#">{{this.name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="content" id="checklists-completed">
+                completed
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="tasks">
+    tasks
+</template>
+
+<template name="chk">
+    checklist
+</template>
+<template name="tsk">
+    task
+</template>
+
+<template name="editpanel">
+    {{#if user}}
+    {{#if checklist}}
+    {{#with checklist}}
+    <div class="row">
+        <div class="large-10 columns">
+            {{#if editingName}}
+            <input id="editing_itemname" type="text" value="{{name}}"/>
+            {{else}}
+            <h3>{{name}}</h3>
+            {{/if}}
+        </div>
+        <div class="large-2 columns">
+            <button class="button tiny secondary right"><i class="fa fa-cog"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <button class="tiny secondary dropdown" data-dropdown="dropdown-patients" href="#">Add Patient</button>
+        <ul id="dropdown-patients" class="f-dropdown" data-dropdown-content>
+            <li><a href="#">Test 1</a></li>
+            <li><a href="#">Test 2</a></li>
+            <li><a href="#">Test 3</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <i class="fa fa-tag"></i> <a href="#"><i class="fa fa-plus"></i></a>
+    </div>
+    <div class="row">
+        <small><a href="#">+ Add Assignee</a></small>
+        <div class="right">Created by {{user.username}} on {{date}}</div>
+    </div>
+    <div class="row">
+        <i class="fa fa-calendar"></i> <strong>{{date}}</strong>
+    </div>
+    <div class="row">
+        <strong>Attachments</strong>
+    </div>
+    <div class="row">
+        <p>List Description</p>
+    </div>
+    <div class="row">
+        <strong>Tasks</strong>
+        <table>
+            <tbody>
+            {{#each tasks}}
+            <tr class="task">
+                <td>{{name}}</td>
+                <td>{{date}}</td>
+                <td>+Add Assignee</td>
+                <td>{{priorityCaption}}</td>
+            </tr>
+            {{/each}}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4"><a id="new-task" href="#">Add Task</a></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="row">
+        <strong>Activity Feed</strong>
+
+        <div class="large-10 columns">
+            <input type="text" placeholder="Write a comment"/>
+        </div>
+        <div class="large-2 columns">
+            <button class="button tiny secondary right"><i class="fa fa-paperclip"></i></button>
+        </div>
+    </div>
+    <script type="text/javascript">$(document).foundation()</script>
+    {{/with}}
+    {{/if}}
+    {{/if}}
+</template>
